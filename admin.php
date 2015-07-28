@@ -26,6 +26,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -47,8 +48,8 @@ $YABALA = unserialize($s);
 <!-- INICIO ENCABEZADO ------------------------------------------------------------------------------------------------>
 <!-- ------------------------------------------------------------------------------------------------------------------>
 
-<h1>SIMULATOR</h1>
-<h2>Administración de las licencia del conjunto</h2>
+<h1><i class='fa fa-umbrella'></i> SIMULATOR</h1>
+<h2>Administración de las licencias del conjunto</h2>
 
 <!-- ------------------------------------------------------------------------------------------------------------------>
 <!-- FIN ENCABEZADO --------------------------------------------------------------------------------------------------->
@@ -69,7 +70,7 @@ $YABALA = unserialize($s);
 <div class='admin'>
 Si quiere agregar una licencia seleccionela y luego haga clic en el botón "AGREGAR LICENCIA". 
 </div>
-
+<br />
 <table>
 
 <tr>
@@ -94,9 +95,9 @@ LICENCIA:
 </tr>
 
 </table>
-
+<br />
 <input name='nombre' value='<?php echo $nombre ?>' type='hidden' />
-<input value='AGREGAR LICENCIA' type='submit' />
+<input value='AGREGAR LICENCIA' type='submit'  id='submit' />
 </form>
 <!-- ------------------------------------------------------------------------------------------------------------------>
 <!-- FIN FORMULARIO AGREGAR LICENCIA -------------------------------------------------------------------------------------->
@@ -120,7 +121,8 @@ LICENCIA:
 $works = $YABALA->getWorks();
 if ($works!=null){//HAY LICENCIAS QUE ADMINISTRAR	
 	echo "<form name='ocDel' method='post' action='del.php' class='admin'>\n";
-	echo "<div class='admin'>Listado de licencias agregadas, si quiere borrar una licencia seleccionela y haga clic en el botón \"BORRAR LICENCIA\".</div>";
+	echo "<div class='admin'>Listado de licencias agregadas, si quiere borrar una licencia seleccionela y haga clic en el botón \"BORRAR LICENCIA\".</div><br />";
+	
 	echo "<input name='nombre' value='".$nombre."' type='hidden' />\n";
 
 	echo "<table class='admin'>";
@@ -128,21 +130,14 @@ if ($works!=null){//HAY LICENCIAS QUE ADMINISTRAR
 	
 	foreach ($works as $key => $work){
 		echo "<tr class='admin'><td class='admin'><input type='radio' name='works' value='$key'>";
-		//$a=0;
-		//print_r($work);
-		//foreach ($work as $field){
-			//$field1 = (string) $field;
 			echo "<td class='admin'>".$work[4]."</td>";
-			//echo "$a<p>";
-			//$a = $a+1;
-		//}
 		echo "</tr>";
 	}
-	echo "</table>";
-	echo "<input value='BORRAR LICENCIA' type='submit' />\n";
+	echo "</table><br />";
+	echo "<input value='BORRAR LICENCIA' type='submit'  id='submit' />\n";
 	echo "</form>\n";
 }else{//NO HAY LICENCIA QUE ADMINISTRAR
-	echo "<div class='admin'>NO HAY LICENCIAS PARA LISTAR</div>";
+	echo "<form class='admin'>NO HAY LICENCIAS PARA LISTAR</form>";
 }
 ?>
 <!-- ------------------------------------------------------------------------------------------------------------------>
@@ -168,22 +163,18 @@ $obras = $YABALA->getWorks();
 
 if (($licencias!=null)&&($obras!=null)){//HAY LICENCIAS POR LAS CUALES OPTAR y LICENCIAS EN EL CONJUNTO
 	echo "<form class='admin'>\n";
-	echo "<div class='admin'>Las licencias disponibles para una obra derivada con la actual combinación de licencias, se lista a continuación:</div>";
-	//echo "<input name='nombre' value='".$nombre."' type='hidden' />\n";
-	//echo "\n"; 
+	echo "<div class='admin'>Las licencias disponibles para una obra derivada con la actual combinación de licencias, se lista en orden de menos a más restrictiva a continuación:</div><br />";
 	echo "<table>\n";
 	foreach ($licencias as $item){
 		echo "<tr><td>$item</td></tr>\n";
 	}
 	echo "</table>\n";
-	//echo "<br>\n";
-	//echo "<input value='CREAR CRÉDITOS' type='submit' />\n";
 	echo "</form>\n";
 }else{//NO HAY LICENCIAS POR LAS CUALES OPTAR O NO HAY LICENCIAS EN EL CONJUNTO
 	if ($licencias==null){//NO HAY LICENCIAS
-		echo "<div class='admin'>LA ACTUAL COMBINACIÓN DE LICENCIAS NO ADMITE GENERAR OBRAS DERIVADAS</div>";
+		echo "<form class='admin'>LA ACTUAL COMBINACIÓN DE LICENCIAS NO ADMITE GENERAR OBRAS DERIVADAS</form>";
 	}else{//NO HAY MATERIALES
-		echo "<div class='admin'>DEBE AGREGAR LICENCIAS PARA PODER OPTAR POR UNA LICENCIA EN LA OBRA DERIVADA</div>";
+		echo "<form class='admin'>DEBE AGREGAR LICENCIAS PARA PODER OPTAR POR UNA LICENCIA EN LA OBRA DERIVADA</form>";
 	}
 }
 ?>

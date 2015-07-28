@@ -26,11 +26,12 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 
 <body>
 
-<h1>SIMULATOR</h1>
+<h1><i class='fa fa-umbrella'></i> SIMULATOR</h1>
 
 <?php
 
@@ -61,7 +62,7 @@ $YABALA = unserialize($s);
 
 <input name="nombre" value="<?php echo $nombre ?>" type="hidden" />
 
-<input value="INGRESAR A SIMULADOR" type="submit" />
+<input value="INGRESAR A SIMULADOR" type="submit"  id='submit' />
 
 </form>
 

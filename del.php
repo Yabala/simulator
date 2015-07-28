@@ -26,6 +26,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -41,7 +42,7 @@ $YABALA = new yabala();
 $YABALA = unserialize($s);
 
 //Encabezado
-echo "<h1>SIMULATOR</h1>";
+echo "<h1><i class='fa fa-umbrella'></i> SIMULATOR</h1>";
 echo "<h2>Borrar licencia del conjunto</h2>";
 
 //quitar el oc (obra) de la coleccion
@@ -58,10 +59,10 @@ file_put_contents('work/'.$nombre, $dump);
 
 
 //formulario para volver al administrador
-echo "<form name='back' method='post' action='admin.php' class='add'>";
-echo "<div class='add'>$mensaje</div>";
+echo "<form name='back' method='post' action='admin.php' class='del'>";
+echo "<div class='del'>$mensaje</div>";
 echo "<input name='nombre' value='$nombre' type='hidden' />";
-echo "<input value='VOLVER' type='submit' />";
+echo "<br /><input value='VOLVER' type='submit'  id='submit' />";
 echo "</form>";
 
 ?>

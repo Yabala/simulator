@@ -26,6 +26,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -41,15 +42,11 @@ $YABALA = new yabala();
 $YABALA = unserialize($s);
 
 //Encabezado
-echo "<h1>SIMULATOR</h1>";
+echo "<h1><i class='fa fa-umbrella'></i> SIMULATOR</h1>";
 echo "<h2>Agregar licencia al conjunto</h2>";
 
 //agregar el oc (obra) a la coleccion
 $YABALA->add("", "", "", "", $_POST["cc"]);
-
-//agregar el oc (obra) a la bd para que pueda ser recuperado en busquedas
-//(esto no es obligatorio, el desarrollador puede optar por hacerlo o no)
-//$YABALA->insert($_POST["format"], $_POST["keywords"], $_POST["autor"], $_POST["url"], $_POST["cc"]);
 
 //Enviar la variable a disco 
 $dump = serialize($YABALA);
@@ -59,7 +56,7 @@ file_put_contents('work/'.$nombre, $dump);
 echo "<form name='back' method='post' action='admin.php' class='add'>";
 echo "<div class='add'>Licencia agregada: ".$_POST["cc"]."</div>";
 echo "<input name='nombre' value='$nombre' type='hidden' />";
-echo "<input value='VOLVER' type='submit' />";
+echo "<br /><input value='VOLVER' type='submit'  id='submit' />";
 echo "</form>";
 
 ?>

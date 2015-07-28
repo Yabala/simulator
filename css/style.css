@@ -25,53 +25,89 @@
 
 body{
     font-family: verdana;
+    background-color: #0FA7FF;
+    color: #FFFFFF;
 }
 
+h1{
+    background-color: #000055;
+    padding: 10px;
+}
+
+h2{
+    border: 1px solid white;
+    padding: 10px;
+}
+
+#submit {
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 0px 0px 0;
+    background: #0FA7FF;
+    border: 1px solid white;
+}
+
+#submit:hover {
+    background: #ff8c00;
+}
+
+
+
 form.index {
-	border: 1px solid black;
-	background-color: #cccccc;
 	margin: 10px;
 	padding: 10px;
  }
  
  div.index {
- 	border: 1px solid white;
- 	background-color: #eeeeee;
  	margin: 3px;
  	padding: 3px;
  }
+ 
+
 
 form.admin {
-	border: 1px solid black;
-	background-color: #cccccc;
+	border: 1px solid white;
 	margin: 10px;
 	padding: 10px;
  }
  
  div.admin {
- 	border: 1px solid white;
- 	background-color: #eeeeee;
- 	margin: 3px;
- 	padding: 3px;
+     //background: #FFFFFF;
+     //color: #000000;
  }
- 
 
-table.admin, tr.admin, td.admin {
-    border: 1px solid black;
+table.admin {
+    border: 0px solid white;
+}
+
+tr.admin, td.admin {
+    border: 0px solid white;
+    text-align: center;
 } 
 
+
+
 form.add {
- 	border: 1px solid black;
- 	background-color: #cccccc;
+ 	border: 1px solid white;
  	margin: 10px;
  	padding: 10px;	 
  }
  
  div.add {
+	 
+ }
+ 
+ 
+ 
+ form.del {
   	border: 1px solid white;
-  	background-color: #eeeeee;
-  	margin: 3px;
-  	padding: 3px;	 
+  	margin: 10px;
+  	padding: 10px;	 
+  }
+  
+  div.del {
+ 	 
  }
  
 
