@@ -45,20 +45,32 @@ $YABALA = unserialize($s);
 echo "<h1><i class='fa fa-umbrella'></i> SIMULATOR</h1>";
 echo "<h2>Agregar licencia al conjunto</h2>";
 
+//castear varible booleana
+if($_POST["modify"]=="FALSE") {$modify=FALSE;}
+else {$modify=TRUE;}
+
 //agregar el oc (obra) a la coleccion
-$YABALA->add("", "", "", "", $_POST["cc"]);
+$msg = $YABALA->add("", "EXAMPLE", "", "unnamed", "", $_POST["cc"], $modify);
 
 //Enviar la variable a disco 
 $dump = serialize($YABALA);
 file_put_contents('work/'.$nombre, $dump);
 
-//formulario para volver al administrador
-echo "<form name='back' method='post' action='admin.php' class='add'>";
-echo "<div class='add'>Licencia agregada: ".$_POST["cc"]."</div>";
-echo "<input name='nombre' value='$nombre' type='hidden' />";
-echo "<br /><input value='VOLVER' type='submit'  id='submit' />";
-echo "</form>";
-
+if($msg==""){//No hay errores al agregar licencia
+	//formulario para volver al administrador
+	echo "<form name='back' method='post' action='admin.php' class='add'>";
+	echo "<div class='add'>Licencia agregada: ".$_POST["cc"]."</div>";
+	echo "<input name='nombre' value='$nombre' type='hidden' />";
+	echo "<br /><input value='VOLVER' type='submit'  id='submit' />";
+	echo "</form>";
+}else{//hay errores al agregar licencia
+	//formulario para volver al administrador
+	echo "<form name='back' method='post' action='admin.php' class='add'>";
+	echo "<div class='add'>La licencia no pudo ser agregada por: ".$msg."</div>";
+	echo "<input name='nombre' value='$nombre' type='hidden' />";
+	echo "<br /><input value='VOLVER' type='submit'  id='submit' />";
+	echo "</form>";
+}
 ?>
 
 

@@ -68,7 +68,7 @@ $YABALA = unserialize($s);
 <form name='ocADD' method='post' action='add.php' class='admin'>
 
 <div class='admin'>
-Si quiere agregar una licencia seleccionela y luego haga clic en el botón "AGREGAR LICENCIA". 
+Si quiere agregar una licencia seleccionela, indique si el material será usado en su forma original o modificado y luego haga clic en el botón "AGREGAR LICENCIA". 
 </div>
 <br />
 <table>
@@ -90,6 +90,18 @@ LICENCIA:
 		}
 	?>
 
+</select>
+</td>
+</tr>
+
+<tr>
+<td>
+MODIFICADO?: 
+</td>
+<td>
+<select name='modify'>
+	<option value="TRUE">SI</option>
+	<option value="FALSE">NO</option>
 </select>
 </td>
 </tr>
@@ -126,11 +138,12 @@ if ($works!=null){//HAY LICENCIAS QUE ADMINISTRAR
 	echo "<input name='nombre' value='".$nombre."' type='hidden' />\n";
 
 	echo "<table class='admin'>";
-	echo "<tr class='admin'><td class='admin'></td><td class='admin'>Licencia</td></tr>";
+	echo "<tr class='admin'><td class='admin'></td><td class='admin'>Licencia</td><td class='admin'>Modificado?</td></tr>";
 	
 	foreach ($works as $key => $work){
 		echo "<tr class='admin'><td class='admin'><input type='radio' name='works' value='$key'>";
-			echo "<td class='admin'>".$work[4]."</td>";
+			echo "<td class='admin'>".$work[5]."</td>";
+			echo "<td class='admin'>".$work[6]."</td>";
 		echo "</tr>";
 	}
 	echo "</table><br />";
