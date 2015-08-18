@@ -49,8 +49,12 @@ echo "<h2>Agregar licencia al conjunto</h2>";
 if($_POST["modify"]=="FALSE") {$modify=FALSE;}
 else {$modify=TRUE;}
 
+//castear varible booleana
+if($_POST["exception"]=="FALSE") {$exception=FALSE;}
+else {$exception=TRUE;}
+
 //agregar el oc (obra) a la coleccion
-$msg = $YABALA->add("", "EXAMPLE", "", "unnamed", "", $_POST["cc"], $modify);
+$msg = $YABALA->add("", "EXAMPLE", "", "unnamed", "", $_POST["cc"], $modify, $exception);
 
 //Enviar la variable a disco 
 $dump = serialize($YABALA);

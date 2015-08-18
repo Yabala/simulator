@@ -101,11 +101,22 @@ MODIFICADO?:
 <td>
 <select name='modify'>
 	<option value="TRUE">SI</option>
-	<option value="FALSE">NO</option>
+	<option value="FALSE" selected>NO</option>
 </select>
 </td>
 </tr>
 
+<tr>
+<td>
+ES UNA EXCEPCIÓN?: 
+</td>
+<td>
+<select name='exception'>
+	<option value="TRUE">SI</option>
+	<option value="FALSE" selected>NO</option>
+</select>
+</td>
+</tr>
 </table>
 <br />
 <input name='nombre' value='<?php echo $nombre ?>' type='hidden' />
@@ -138,12 +149,13 @@ if ($works!=null){//HAY LICENCIAS QUE ADMINISTRAR
 	echo "<input name='nombre' value='".$nombre."' type='hidden' />\n";
 
 	echo "<table class='admin'>";
-	echo "<tr class='admin'><td class='admin'></td><td class='admin'>Licencia</td><td class='admin'>Modificado?</td></tr>";
+	echo "<tr class='admin'><td class='admin'></td><td class='admin'>Licencia</td><td class='admin'>Modificado?</td><td class='admin'>Excepción?</td></tr>";
 	
 	foreach ($works as $key => $work){
 		echo "<tr class='admin'><td class='admin'><input type='radio' name='works' value='$key'>";
 			echo "<td class='admin'>".$work[5]."</td>";
 			echo "<td class='admin'>".$work[6]."</td>";
+			echo "<td class='admin'>".$work[7]."</td>";
 		echo "</tr>";
 	}
 	echo "</table><br />";
